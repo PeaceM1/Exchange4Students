@@ -1,5 +1,4 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, QuerySnapshot } from "firebase/firestore";
+import firebase from "../firebase";
 import { useEffect, useState } from "react"; 
 
 function FirebaseTestScreen() {
@@ -10,9 +9,9 @@ function FirebaseTestScreen() {
 
     function getListings() {
         setLoading(true);
-        ref.onSnapshot((querySnapshot) => {
+        ref.onSnapshot((QuerySnapshot) => {
             const items = [];
-            querySnapshot.forEach((doc) => {
+            QuerySnapshot.forEach((doc) => {
                 items.push(doc.data());
             });
             setListings(items);
